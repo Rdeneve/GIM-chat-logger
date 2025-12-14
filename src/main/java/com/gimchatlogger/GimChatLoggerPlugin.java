@@ -6,6 +6,7 @@ import com.gimchatlogger.enums.AccountType;
 import com.gimchatlogger.enums.SystemMessageType;
 import com.google.inject.Provides;
 
+import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.events.ChatMessage;
@@ -22,6 +23,7 @@ import java.io.IOException;
 @PluginDescriptor(
 	name = "GIM Chat Logger"
 )
+@Slf4j
 public class GimChatLoggerPlugin extends Plugin
 {
 	@Provides
@@ -75,8 +77,7 @@ public class GimChatLoggerPlugin extends Plugin
 			@Override
 			public void onFailure(Call call, IOException e)
 			{
-				System.out.println("Error submitting webhook");
-				System.out.println(e.getMessage());
+				log.debug("Error submitting webhook", e);
 			}
 
 			@Override
