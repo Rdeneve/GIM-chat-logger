@@ -49,7 +49,8 @@ public class GimChatLoggerPlugin extends Plugin
 		if (chatMessageType == ChatMessageType.CLAN_GIM_MESSAGE || chatMessageType == ChatMessageType.CLAN_GIM_CHAT) {
 			var messageAuthor = DiscordHelper.getMessageAuthor(chatMessage.getName());
 			// Only process messages for current user, not for every message in the chat
-			if (!messageAuthor.equals(getPlayerName()) && !chatMessage.getMessage().contains(messageAuthor)) {
+			var playerName = getPlayerName();
+			if (!messageAuthor.equals(getPlayerName()) && !chatMessage.getMessage().contains(getPlayerName())) {
 				return;
 			}
 
